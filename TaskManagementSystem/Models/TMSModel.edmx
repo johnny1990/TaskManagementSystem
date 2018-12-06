@@ -132,9 +132,9 @@
           <Property Name="ProjectID" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_dbo_Tasks_dbo_Employees_EmployeeId" FromRole="Tasks" ToRole="Employees" />
           <NavigationProperty Name="Project" Relationship="Self.FK_dbo_Tasks_dbo_Projects_ProjectID" FromRole="Tasks" ToRole="Projects" />
-          <NavigationProperty Name="TaskStatu" Relationship="Self.FK_dbo_Tasks_dbo_TaskStatus_StatusId" FromRole="Tasks" ToRole="TaskStatus" />
+          <NavigationProperty Name="TaskStatus" Relationship="Self.FK_dbo_Tasks_dbo_TaskStatus_StatusId" FromRole="Tasks" ToRole="TaskStatus" />
         </EntityType>
-        <EntityType Name="TaskStatu">
+        <EntityType Name="TaskStatus">
           <Key>
             <PropertyRef Name="StatusId" />
           </Key>
@@ -169,7 +169,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_Tasks_dbo_TaskStatus_StatusId">
-          <End Role="TaskStatus" Type="Self.TaskStatu" Multiplicity="1">
+          <End Role="TaskStatus" Type="Model.TaskStatus" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
@@ -186,7 +186,7 @@
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="Tasks" EntityType="Self.Task" />
-          <EntitySet Name="TaskStatus" EntityType="Self.TaskStatu" />
+          <EntitySet Name="TaskStatus1" EntityType="Model.TaskStatus" />
           <AssociationSet Name="FK_dbo_Tasks_dbo_Employees_EmployeeId" Association="Self.FK_dbo_Tasks_dbo_Employees_EmployeeId">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Tasks" EntitySet="Tasks" />
@@ -196,7 +196,7 @@
             <End Role="Tasks" EntitySet="Tasks" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Tasks_dbo_TaskStatus_StatusId" Association="Self.FK_dbo_Tasks_dbo_TaskStatus_StatusId">
-            <End Role="TaskStatus" EntitySet="TaskStatus" />
+            <End Role="TaskStatus" EntitySet="TaskStatus1" />
             <End Role="Tasks" EntitySet="Tasks" />
           </AssociationSet>
         </EntityContainer>
@@ -236,8 +236,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TaskStatus">
-            <EntityTypeMapping TypeName="Model.TaskStatu">
+          <EntitySetMapping Name="TaskStatus1">
+            <EntityTypeMapping TypeName="Model.TaskStatus">
               <MappingFragment StoreEntitySet="TaskStatus">
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />

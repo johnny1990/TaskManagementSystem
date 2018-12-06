@@ -24,6 +24,6 @@ namespace TaskManagementSystem.Models
     
         public virtual Employee Employee { get; set; }
         public virtual Project Project { get; set; }
-        public virtual TaskStatu TaskStatu { get; set; }
+        public virtual TaskStatus TaskStatus { get; set; }
     }
 }

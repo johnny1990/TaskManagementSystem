@@ -28,6 +28,6 @@ namespace TaskManagementSystem.Models
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
-        public virtual DbSet<TaskStatu> TaskStatus { get; set; }
+        public virtual DbSet<TaskStatus> TaskStatus1 { get; set; }
     }
 }
