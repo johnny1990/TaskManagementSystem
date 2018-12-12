@@ -20,21 +20,6 @@ namespace TaskManagementSystem.Controllers
             return View(db.TaskStatus1.ToList());
         }
 
-        // GET: TaskStatus/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            TaskStatus taskStatus = db.TaskStatus1.Find(id);
-            if (taskStatus == null)
-            {
-                return HttpNotFound();
-            }
-            return View(taskStatus);
-        }
-
         // GET: TaskStatus/Create
         public ActionResult Create()
         {
