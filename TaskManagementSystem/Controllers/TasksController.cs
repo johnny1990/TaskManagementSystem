@@ -14,6 +14,7 @@ namespace TaskManagementSystem.Controllers
         private TMSEntities db = new TMSEntities();
 
         // GET: Tasks
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index()
         {
             //var tasks = db.Tasks.Include(t => t.Employee).Include(t => t.TaskStatus);
@@ -49,20 +50,7 @@ namespace TaskManagementSystem.Controllers
             return View("Index", tasks.ToList());
         }
 
-        // GET: /Task/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Task taskdetail = db.Tasks.Find(id);
-            if (taskdetail == null)
-            {
-                return HttpNotFound();
-            }
-            return View(taskdetail);
-        }
+        [Authorize(Roles = "Admin")]
 
         public ActionResult Create()
         {
@@ -76,6 +64,7 @@ namespace TaskManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "TaskId,TaskName,TaskDescription,AssignDate,EmployeeId,StatusId")] Task task)
         {
 
@@ -92,6 +81,7 @@ namespace TaskManagementSystem.Controllers
         }
 
         // GET: /Task/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -113,6 +103,7 @@ namespace TaskManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "TaskId,TaskName,TaskDescription,AssignDate,EmployeeId,StatusId")] Task task)
         {
             if (ModelState.IsValid)
@@ -127,6 +118,7 @@ namespace TaskManagementSystem.Controllers
         }
 
         // GET: /Task/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -144,6 +136,7 @@ namespace TaskManagementSystem.Controllers
         // POST: /Task/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Task task = db.Tasks.Find(id);

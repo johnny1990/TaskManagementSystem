@@ -15,12 +15,14 @@ namespace TaskManagementSystem.Controllers
         private TMSEntities db = new TMSEntities();
 
         // GET: Employees
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index()
         {
             return View(db.Employees.ToList());
         }
 
         // GET: Employees/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -31,6 +33,7 @@ namespace TaskManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "EmployeeId,EmployeeName")] Employee employee)
         {
             if (ModelState.IsValid)
@@ -44,6 +47,7 @@ namespace TaskManagementSystem.Controllers
         }
 
         // GET: Employees/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -63,6 +67,7 @@ namespace TaskManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "EmployeeId,EmployeeName")] Employee employee)
         {
             if (ModelState.IsValid)
@@ -75,6 +80,7 @@ namespace TaskManagementSystem.Controllers
         }
 
         // GET: Employees/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -92,6 +98,7 @@ namespace TaskManagementSystem.Controllers
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Employee employee = db.Employees.Find(id);

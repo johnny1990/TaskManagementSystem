@@ -14,12 +14,14 @@ namespace TaskManagementSystem.Controllers
     {
         private TMSEntities db = new TMSEntities();
 
+        [Authorize(Roles = "Admin, Employee")]
         // GET: TaskStatus
         public ActionResult Index()
         {
             return View(db.TaskStatus1.ToList());
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: TaskStatus/Create
         public ActionResult Create()
         {
@@ -31,6 +33,7 @@ namespace TaskManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "StatusId,StatusName")] TaskStatus taskStatus)
         {
             if (ModelState.IsValid)
@@ -44,6 +47,7 @@ namespace TaskManagementSystem.Controllers
         }
 
         // GET: TaskStatus/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -63,6 +67,7 @@ namespace TaskManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "StatusId,StatusName")] TaskStatus taskStatus)
         {
             if (ModelState.IsValid)
@@ -75,6 +80,7 @@ namespace TaskManagementSystem.Controllers
         }
 
         // GET: TaskStatus/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -91,6 +97,7 @@ namespace TaskManagementSystem.Controllers
 
         // POST: TaskStatus/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

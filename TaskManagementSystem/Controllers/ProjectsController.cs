@@ -15,12 +15,14 @@ namespace TaskManagementSystem.Controllers
         private TMSEntities db = new TMSEntities();
 
         // GET: Projects
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index()
         {
             return View(db.Projects.ToList());
         }
 
         // GET: Projects/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -31,6 +33,7 @@ namespace TaskManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "ProjectId,ProjectName,ProjectDescription")] Project project)
         {
             if (ModelState.IsValid)
@@ -44,6 +47,7 @@ namespace TaskManagementSystem.Controllers
         }
 
         // GET: Projects/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -63,6 +67,7 @@ namespace TaskManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "ProjectId,ProjectName,ProjectDescription")] Project project)
         {
             if (ModelState.IsValid)
@@ -75,6 +80,7 @@ namespace TaskManagementSystem.Controllers
         }
 
         // GET: Projects/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -92,6 +98,7 @@ namespace TaskManagementSystem.Controllers
         // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Project project = db.Projects.Find(id);
