@@ -132,7 +132,7 @@
           <Property Name="ProjectID" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_dbo_Tasks_dbo_Employees_EmployeeId" FromRole="Tasks" ToRole="Employees" />
           <NavigationProperty Name="Project" Relationship="Self.FK_dbo_Tasks_dbo_Projects_ProjectID" FromRole="Tasks" ToRole="Projects" />
-          <NavigationProperty Name="TaskStatus" Relationship="Self.FK_dbo_Tasks_dbo_TaskStatus_StatusId" FromRole="Tasks" ToRole="TaskStatus" />
+          <NavigationProperty Name="TaskStatu" Relationship="Self.FK_dbo_Tasks_dbo_TaskStatus_StatusId" FromRole="Tasks" ToRole="TaskStatus" />
         </EntityType>
         <EntityType Name="TaskStatus">
           <Key>

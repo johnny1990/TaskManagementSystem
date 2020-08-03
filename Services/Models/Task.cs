@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TaskManagementSystem.Models
+namespace Services.Models
 {
     using System;
     using System.Collections.Generic;

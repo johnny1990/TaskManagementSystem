@@ -187,35 +187,8 @@
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Employee.cs">
-      <DependentUpon>TMSModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Project.cs">
-      <DependentUpon>TMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Task.cs">
-      <DependentUpon>TMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TaskStatus.cs">
-      <DependentUpon>TMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TMSModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TMSModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TMSModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TMSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TMSModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TMSModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -232,25 +205,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\TMSModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TMSModel.edmx</DependentUpon>
-      <LastGenOutput>TMSModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\TMSModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TMSModel.edmx</DependentUpon>
-      <LastGenOutput>TMSModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\TMSModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TMSModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\TMSModel.edmx.diagram">
-      <DependentUpon>TMSModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -330,7 +286,12 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{43a1aa1b-de64-48ba-a54f-3a9a53d5b96e}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

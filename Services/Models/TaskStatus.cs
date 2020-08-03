@@ -7,21 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TaskManagementSystem.Models
+namespace Services.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class TaskStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
+        public TaskStatus()
         {
             this.Tasks = new HashSet<Task>();
         }
     
-        public int EmployeeId { get; set; }
-        public string EmployeeName { get; set; }
+        public int StatusId { get; set; }
+        public string StatusName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Tasks { get; set; }
