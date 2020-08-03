@@ -177,11 +177,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Connected Services\EmployeeServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -235,13 +230,10 @@
     <Content Include="App_Data\aspnet-TaskManagementSystem-20181201120958_log.ldf">
       <DependentUpon>aspnet-TaskManagementSystem-20181201120958.mdf</DependentUpon>
     </Content>
-    <None Include="Connected Services\EmployeeServiceReference\EmployeeService.disco" />
-    <None Include="Connected Services\EmployeeServiceReference\configuration91.svcinfo" />
-    <None Include="Connected Services\EmployeeServiceReference\configuration.svcinfo" />
-    <None Include="Connected Services\EmployeeServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <Content Include="App_Data\TMS.mdf" />
+    <Content Include="App_Data\TMS_log.ldf">
+      <DependentUpon>TMS.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -269,19 +261,6 @@
     </EntityDeploy>
     <Content Include="Models\TMSModel.edmx.diagram">
       <DependentUpon>TMSModel.edmx</DependentUpon>
-    </Content>
-    <None Include="Connected Services\EmployeeServiceReference\EmployeeService.wsdl" />
-    <None Include="Connected Services\EmployeeServiceReference\EmployeeService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\EmployeeServiceReference\EmployeeService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\EmployeeServiceReference\EmployeeService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Connected Services\EmployeeServiceReference\TaskManagementSystem.EmployeeServiceReference.Employee.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -365,9 +344,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\EmployeeServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

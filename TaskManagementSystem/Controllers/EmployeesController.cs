@@ -8,12 +8,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TaskManagementSystem.Models;
+using TaskManagementSystem.Services.Employee;
 
 namespace TaskManagementSystem.Controllers
 {
     public class EmployeesController : Controller
     {
-        EmployeeServiceReference.EmployeeServiceClient emp = new EmployeeServiceReference.EmployeeServiceClient();
+        EmployeeService emp = new EmployeeService();
         private TMSEntities db = new TMSEntities();
 
         // GET: Employees

@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.Employee.EmployeeName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TaskStatus.StatusName)
+            @Html.DisplayNameFor(model => model.TaskStatu.StatusName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TaskName)
@@ -51,7 +51,7 @@
                 @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TaskStatus.StatusName)
+                @Html.DisplayFor(modelItem => item.TaskStatu.StatusName)
             </td>
             <td>
                 @Html.Truncate(item.TaskName, 20);
