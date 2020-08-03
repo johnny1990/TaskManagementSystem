@@ -1,5 +1,4 @@
-﻿using Services.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -19,7 +18,7 @@ namespace TaskManagementSystem.Controllers
         // GET: TaskStatus
         public ActionResult Index()
         {
-            return View(db.TaskStatus1.ToList());
+            return View(db.TaskStatus.ToList());
         }
 
         [Authorize(Roles = "Admin")]
@@ -35,11 +34,11 @@ namespace TaskManagementSystem.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "StatusId,StatusName")] TaskStatus taskStatus)
+        public ActionResult Create([Bind(Include = "StatusId,StatusName")] TaskStatu taskStatus)
         {
             if (ModelState.IsValid)
             {
-                db.TaskStatus1.Add(taskStatus);
+                db.TaskStatus.Add(taskStatus);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -55,7 +54,7 @@ namespace TaskManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaskStatus taskStatus = db.TaskStatus1.Find(id);
+            TaskStatu taskStatus = db.TaskStatus.Find(id);
             if (taskStatus == null)
             {
                 return HttpNotFound();
@@ -69,7 +68,7 @@ namespace TaskManagementSystem.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "StatusId,StatusName")] TaskStatus taskStatus)
+        public ActionResult Edit([Bind(Include = "StatusId,StatusName")] TaskStatu taskStatus)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +87,7 @@ namespace TaskManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaskStatus taskStatus = db.TaskStatus1.Find(id);
+            TaskStatu taskStatus = db.TaskStatus.Find(id);
             if (taskStatus == null)
             {
                 return HttpNotFound();
@@ -102,8 +101,8 @@ namespace TaskManagementSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TaskStatus taskStatus = db.TaskStatus1.Find(id);
-            db.TaskStatus1.Remove(taskStatus);
+            TaskStatu taskStatus = db.TaskStatus.Find(id);
+            db.TaskStatus.Remove(taskStatus);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

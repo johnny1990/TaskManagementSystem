@@ -1,4 +1,4 @@
-﻿using Services.Models;
+﻿//using Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,13 +13,28 @@ namespace TaskManagementSystem.Controllers
 {
     public class EmployeesController : Controller
     {
+        EmployeeServiceReference.EmployeeServiceClient emp = new EmployeeServiceReference.EmployeeServiceClient();
         private TMSEntities db = new TMSEntities();
 
         // GET: Employees
         [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index()
         {
-            return View(db.Employees.ToList());
+            List<Employee> lstRecord = new List<Employee>();
+
+            var lst = emp.GetAllEmployees();
+
+            foreach (var item in lst)
+            {
+                Employee e = new Employee();
+                e.EmployeeId = item.EmployeeId;
+                e.EmployeeName = item.EmployeeName;
+                lstRecord.Add(e);
+
+            }
+            return View(lstRecord);
+
+            //return View(db.Employees.ToList());
         }
 
         // GET: Employees/Create

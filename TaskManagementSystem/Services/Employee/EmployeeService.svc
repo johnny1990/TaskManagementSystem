@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="TaskManagementSystem.Services.Employee.EmployeeService" CodeBehind="EmployeeService.svc.cs" %>

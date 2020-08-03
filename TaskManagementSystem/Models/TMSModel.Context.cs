@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Services.Models
+namespace TaskManagementSystem.Models
 {
     using System;
     using System.Data.Entity;
@@ -28,6 +28,6 @@ namespace Services.Models
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
-        public virtual DbSet<TaskStatus> TaskStatus1 { get; set; }
+        public virtual DbSet<TaskStatu> TaskStatus { get; set; }
     }
 }

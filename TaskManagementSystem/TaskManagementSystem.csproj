@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +52,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -175,6 +177,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Connected Services\EmployeeServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -187,9 +194,40 @@
     </Compile>
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>TMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Project.cs">
+      <DependentUpon>TMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Task.cs">
+      <DependentUpon>TMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskStatu.cs">
+      <DependentUpon>TMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TMSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TMSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TMSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMSModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Employee\EmployeeService.svc.cs">
+      <DependentUpon>EmployeeService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Employee\IEmployeeService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +235,13 @@
     <Content Include="App_Data\aspnet-TaskManagementSystem-20181201120958_log.ldf">
       <DependentUpon>aspnet-TaskManagementSystem-20181201120958.mdf</DependentUpon>
     </Content>
+    <None Include="Connected Services\EmployeeServiceReference\EmployeeService.disco" />
+    <None Include="Connected Services\EmployeeServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\EmployeeServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\EmployeeServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -205,8 +250,39 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\TMSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TMSModel.edmx</DependentUpon>
+      <LastGenOutput>TMSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TMSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TMSModel.edmx</DependentUpon>
+      <LastGenOutput>TMSModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Properties\DataSources\Services.Models.Employee.datasource" />
+    <EntityDeploy Include="Models\TMSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TMSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TMSModel.edmx.diagram">
+      <DependentUpon>TMSModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Connected Services\EmployeeServiceReference\EmployeeService.wsdl" />
+    <None Include="Connected Services\EmployeeServiceReference\EmployeeService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EmployeeServiceReference\EmployeeService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\EmployeeServiceReference\EmployeeService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\EmployeeServiceReference\TaskManagementSystem.EmployeeServiceReference.Employee.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -218,6 +294,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Services\Employee\EmployeeService.svc" />
     <Content Include="UsersPassword.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -287,10 +364,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Services\Services.csproj">
-      <Project>{43a1aa1b-de64-48ba-a54f-3a9a53d5b96e}</Project>
-      <Name>Services</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\EmployeeServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

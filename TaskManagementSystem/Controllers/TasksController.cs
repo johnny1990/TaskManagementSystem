@@ -1,5 +1,4 @@
-﻿using Services.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -42,7 +41,7 @@ namespace TaskManagementSystem.Controllers
                         t.TaskName.Contains(SearchBox)
                         || t.TaskDescription.Contains(SearchBox)
                         || t.Employee.EmployeeName.Contains(SearchBox)
-                        || t.TaskStatus.StatusName.Contains(SearchBox));
+                        || t.TaskStatu.StatusName.Contains(SearchBox));
 
 
                 }
@@ -56,7 +55,7 @@ namespace TaskManagementSystem.Controllers
         public ActionResult Create()
         {
             ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "EmployeeName");
-            ViewBag.StatusId = new SelectList(db.TaskStatus1, "StatusId", "StatusName");
+            ViewBag.StatusId = new SelectList(db.TaskStatus, "StatusId", "StatusName");
             return View();
         }
 
@@ -77,7 +76,7 @@ namespace TaskManagementSystem.Controllers
             }
 
             ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "EmployeeName", task.EmployeeId);
-            ViewBag.StatusId = new SelectList(db.TaskStatus1, "StatusId", "StatusName", task.StatusId);
+            ViewBag.StatusId = new SelectList(db.TaskStatus, "StatusId", "StatusName", task.StatusId);
             return View(task);
         }
 
@@ -95,7 +94,7 @@ namespace TaskManagementSystem.Controllers
                 return HttpNotFound();
             }
             ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "EmployeeName", task.EmployeeId);
-            ViewBag.StatusId = new SelectList(db.TaskStatus1, "StatusId", "StatusName", task.StatusId);
+            ViewBag.StatusId = new SelectList(db.TaskStatus, "StatusId", "StatusName", task.StatusId);
             return View(task);
         }
 
@@ -114,7 +113,7 @@ namespace TaskManagementSystem.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.EmployeeId = new SelectList(db.Employees, "EmployeeId", "EmployeeName", task.EmployeeId);
-            ViewBag.StatusId = new SelectList(db.TaskStatus1, "StatusId", "StatusName", task.StatusId);
+            ViewBag.StatusId = new SelectList(db.TaskStatus, "StatusId", "StatusName", task.StatusId);
             return View(task);
         }
 
