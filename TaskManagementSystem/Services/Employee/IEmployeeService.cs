@@ -19,7 +19,7 @@ namespace TaskManagementSystem.Services.Employee
         int AddEmployee(string Name);
 
         [OperationContract]
-        Models.Employee GetAllEmployeesById(int id);
+        Models.Employee GetAllEmployeesById(int? id);
 
         [OperationContract]
         int UpdateEmployee(int Id, string Name);

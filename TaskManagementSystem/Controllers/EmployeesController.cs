@@ -15,8 +15,6 @@ namespace TaskManagementSystem.Controllers
     public class EmployeesController : Controller
     {
         EmployeeService emp = new EmployeeService();
-        private TMSEntities db = new TMSEntities();
-
         // GET: Employees
         [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index()
@@ -34,8 +32,6 @@ namespace TaskManagementSystem.Controllers
 
             }
             return View(lstRecord);
-
-            //return View(db.Employees.ToList());
         }
 
         // GET: Employees/Create
@@ -55,11 +51,11 @@ namespace TaskManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Employees.Add(employee);
-                db.SaveChanges();
+                Employee empl = new Employee();
+                empl.EmployeeName = employee.EmployeeName;
+                emp.AddEmployee(empl.EmployeeName);
                 return RedirectToAction("Index");
             }
-
             return View(employee);
         }
 
@@ -71,7 +67,7 @@ namespace TaskManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            Employee employee = emp.GetAllEmployeesById(id); 
             if (employee == null)
             {
                 return HttpNotFound();
@@ -89,11 +85,13 @@ namespace TaskManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
-                db.SaveChanges();
+                emp.UpdateEmployee(employee.EmployeeId, employee.EmployeeName);
                 return RedirectToAction("Index");
             }
-            return View(employee);
+            else
+            {
+                return HttpNotFound();
+            }        
         }
 
         // GET: Employees/Delete/5
@@ -104,7 +102,7 @@ namespace TaskManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            Employee employee = emp.GetAllEmployeesById(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -118,19 +116,9 @@ namespace TaskManagementSystem.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Employee employee = db.Employees.Find(id);
-            db.Employees.Remove(employee);
-            db.SaveChanges();
+            Employee employee = emp.GetAllEmployeesById(id);
+            emp.DeleteEmployeeById(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

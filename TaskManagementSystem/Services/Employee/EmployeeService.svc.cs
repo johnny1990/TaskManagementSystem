@@ -30,7 +30,7 @@ namespace TaskManagementSystem.Services.Employee
             return emplst;
         }
 
-        public Models.Employee GetAllEmployeesById(int id)
+        public Models.Employee GetAllEmployeesById(int? id)
         {
             TMSEntities tstDb = new TMSEntities();
             var lstEmp = from k in tstDb.Employees where k.EmployeeId == id select k;
